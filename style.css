@@ -1,0 +1,204 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #000;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+#start-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+#logo {
+    font-size: 72px;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.6);
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    margin-bottom: 40px;
+    animation: glow 2s infinite alternate;
+}
+
+#start-button {
+    padding: 15px 30px;
+    font-size: 24px;
+    color: #fff;
+    background: transparent;
+    border: 3px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin: 10px;
+}
+
+#start-button span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: rgba(0, 255, 255, 0.5);
+    transition: height 0.3s ease;
+    z-index: -1;
+}
+
+#start-button:hover span {
+    height: 100%;
+}
+
+#start-lightning-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 199;
+}
+
+.start-lightning {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    animation: flash 0.3s ease-out;
+}
+
+#game-container {
+    position: relative;
+    width: 1000px;
+    height: 600px;
+    background: #1a1a1a;
+    border: none;
+    overflow: hidden;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+#score {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    z-index: 10;
+    text-shadow: 2px 2px 4px #000;
+    opacity: 0.8;
+}
+
+#player {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    bottom: 20px;
+    left: 480px;
+    transition: all 0.03s linear;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    z-index: 5;
+}
+
+.obstacle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    top: -30px;
+    animation: fall linear;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    z-index: 5;
+}
+
+.horizontal-obstacle-left {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    background: #fff;
+    bottom: 20px;
+    left: -100px;
+    animation: slide-left 2s linear;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    z-index: 5;
+}
+
+.horizontal-obstacle-right {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    background: #fff;
+    bottom: 20px;
+    right: -100px;
+    animation: slide-right 2s linear;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+    z-index: 5;
+}
+
+.raindrop {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    top: -20px;
+    animation: rain linear infinite;
+    z-index: 5;
+}
+
+.lightning {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    animation: flash 0.2s linear;
+    z-index: 5;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(0, 255, 255, 0.6); }
+    to { text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 60px rgba(0, 255, 255, 0.8); }
+}
+
+@keyframes flash {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes fall {
+    0% { top: -30px; }
+    100% { top: 600px; }
+}
+
+@keyframes slide-left {
+    0% { left: 1000px; }
+    100% { left: -100px; }
+}
+
+@keyframes slide-right {
+    0% { right: 1000px; }
+    100% { right: -100px; }
+}
+
+@keyframes rain {
+    0% { top: -20px; opacity: 1; }
+    100% { top: 600px; opacity: 0; }
+}
